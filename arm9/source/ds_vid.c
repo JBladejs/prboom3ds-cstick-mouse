@@ -67,7 +67,7 @@ int keys3ds[32][3] = {
 	{ 0, 0,	0 }, //bit 25
 	{ 0, 0,	0 }, //bit 26
 	{ 0, 0,	0 }, //bit 27
-	
+
 	{ KEY_CPAD_RIGHT,	KEYD_CPAD_RIGHT,	0 }, //bit 28
 	{ KEY_CPAD_LEFT,	KEYD_CPAD_LEFT,		0 }, //bit 29
 	{ KEY_CPAD_UP,		KEYD_CPAD_UP,		0 }, //bit 30
@@ -112,6 +112,7 @@ extern boolean setup_select; // changing an item
 
 void DS_Controls(void) {
 	touchPosition touch;
+	circlePosition cpos;
 
 	scanKeys();	// Do DS input housekeeping
 	u32 keys = keysDown();
@@ -139,6 +140,20 @@ void DS_Controls(void) {
 			ev.data1 = keys3ds[i][(altmode && keys3ds[i][2]) ? 2 : 1];
 			D_PostEvent(&ev);
 		}
+	}
+
+	//handle c-stick as a mouse input
+	if (KEY_CSTICK_DOWN | KEY_CSTICK_RIGHT | KEY_CSTICK_LEFT | KEY_CSTICK_UP & held) {
+		event_t event;
+		hidCstickRead(&cpos);
+		event.type = ev_mouse;
+		event.data1 = 0;
+		event.data2 = cpos.dx;
+		event.data3 = cpos.dy;
+		D_PostEvent(&event);
+		
+		g_lastTouch.px = (g_lastTouch.px + g_currentTouch.px) / 2;
+		g_lastTouch.py = (g_lastTouch.py + g_currentTouch.py) / 2;
 	}
 
 #else
