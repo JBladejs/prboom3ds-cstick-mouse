@@ -212,4 +212,8 @@
 
 /* Define to `int' if <sys/types.h> doesn't define. */
 /* #undef uid_t */
+
+/* Define to change cstick speed modifier */
+#define CSTICK_MOD 6
+
 #endif
