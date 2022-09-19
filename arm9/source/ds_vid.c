@@ -37,6 +37,8 @@ void AM_ZoomIn();
 touchPosition	g_lastTouch = { 0, 0 };
 touchPosition	g_currentTouch = { 0, 0 };
 
+int cstick_keys = KEY_CSTICK_DOWN | KEY_CSTICK_LEFT | KEY_CSTICK_UP | KEY_CSTICK_RIGHT;
+
 //0=DS Bit,1=game key, 2=menu key
 int keys3ds[32][3] = {
 	{ KEY_A,		KEYD_RCTRL,		KEYD_ENTER }, //bit 00
@@ -67,7 +69,6 @@ int keys3ds[32][3] = {
 	{ 0, 0,	0 }, //bit 25
 	{ 0, 0,	0 }, //bit 26
 	{ 0, 0,	0 }, //bit 27
-
 	{ KEY_CPAD_RIGHT,	KEYD_CPAD_RIGHT,	0 }, //bit 28
 	{ KEY_CPAD_LEFT,	KEYD_CPAD_LEFT,		0 }, //bit 29
 	{ KEY_CPAD_UP,		KEYD_CPAD_UP,		0 }, //bit 30
@@ -143,7 +144,7 @@ void DS_Controls(void) {
 	}
 
 	//handle c-stick as a mouse input
-	if (KEY_CSTICK_DOWN | KEY_CSTICK_RIGHT | KEY_CSTICK_LEFT | KEY_CSTICK_UP & held) {
+	if (cstick_keys & (held | keys)) {
 		event_t event;
 		hidCstickRead(&cpos);
 		event.type = ev_mouse;
