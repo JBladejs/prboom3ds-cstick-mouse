@@ -149,11 +149,8 @@ void DS_Controls(void) {
 		event.type = ev_mouse;
 		event.data1 = 0;
 		event.data2 = cpos.dx;
-		event.data3 = cpos.dy;
+		event.data3 = 0;
 		D_PostEvent(&event);
-		
-		g_lastTouch.px = (g_lastTouch.px + g_currentTouch.px) / 2;
-		g_lastTouch.py = (g_lastTouch.py + g_currentTouch.py) / 2;
 	}
 
 #else
