@@ -149,7 +149,7 @@ void DS_Controls(void) {
 		hidCstickRead(&cpos);
 		event.type = ev_mouse;
 		event.data1 = 0;
-		event.data2 = cpos.dx << 2;
+		event.data2 = cpos.dx * 3;
 		event.data3 = 0;
 		D_PostEvent(&event);
 	}
