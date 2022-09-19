@@ -214,6 +214,6 @@
 /* #undef uid_t */
 
 /* Define to change cstick speed modifier */
-#define CSTICK_MOD 6
+#define CSTICK_MOD 3
 
 #endif
