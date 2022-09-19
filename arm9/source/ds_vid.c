@@ -63,10 +63,11 @@ int keys3ds[32][3] = {
 	{ 0, 0, 0 }, //bit 21
 	{ 0, 0, 0 }, //bit 22
 	{ 0, 0, 0 }, //bit 23
-	{ KEY_CSTICK_RIGHT,	KEYD_CSTICK_RIGHT,	0 }, //bit 24
-	{ KEY_CSTICK_LEFT,	KEYD_CSTICK_LEFT,	0 }, //bit 25
-	{ KEY_CSTICK_UP,	KEYD_CSTICK_UP,		0 }, //bit 26
-	{ KEY_CSTICK_DOWN,	KEYD_CSTICK_DOWN,	0 }, //bit 27
+	{ 0, 0,	0 }, //bit 24
+	{ 0, 0,	0 }, //bit 25
+	{ 0, 0,	0 }, //bit 26
+	{ 0, 0,	0 }, //bit 27
+	
 	{ KEY_CPAD_RIGHT,	KEYD_CPAD_RIGHT,	0 }, //bit 28
 	{ KEY_CPAD_LEFT,	KEYD_CPAD_LEFT,		0 }, //bit 29
 	{ KEY_CPAD_UP,		KEYD_CPAD_UP,		0 }, //bit 30
